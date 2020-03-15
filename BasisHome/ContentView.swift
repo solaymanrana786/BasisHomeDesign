@@ -14,7 +14,7 @@ struct ContentView: View {
     let data = ["1","2","3"]
     var body: some View {
         List{
-            ScrollView{
+            ScrollView(.vertical){
                 VStack{
                     HStack{
                         Image("menu")
@@ -32,12 +32,14 @@ struct ContentView: View {
                             .clipped()
                     }.padding(.trailing)
                     
-                    Image("Espresso")
-                        .resizable()
-                        .frame(height: 180)
-                        .clipped()
-                        .cornerRadius(5)
-                        .padding(.trailing)
+                    
+                        Image("Espresso")
+                            .resizable()
+                            .frame(height: 180)
+                            .clipped()
+                            .cornerRadius(5)
+                            .padding(.trailing)
+                    
                     
                     VStack(alignment: .leading){
                         Text("About Basis")
@@ -53,7 +55,7 @@ struct ContentView: View {
                     HStack(alignment: .center, spacing:15.0){
                         
                         VStack(alignment: .leading,spacing: 10){
-                            Image("menu")
+                            Image("teamwork")
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .clipped()
@@ -71,7 +73,7 @@ struct ContentView: View {
                         Divider()
                         
                         VStack(alignment: .leading,spacing: 10){
-                            Image("menu")
+                            Image("man")
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .clipped()
@@ -87,7 +89,7 @@ struct ContentView: View {
                         .frame(width: 60.0)
                         Divider()
                         VStack(alignment: .leading,spacing: 10){
-                            Image("menu")
+                            Image("manager")
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .clipped()
@@ -105,7 +107,7 @@ struct ContentView: View {
                         .frame(width: 60.0, height: 120.0)
                         Divider()
                         VStack(alignment: .leading,spacing: 10){
-                            Image("menu")
+                            Image("global")
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .clipped()
@@ -125,13 +127,13 @@ struct ContentView: View {
                     
                     HStack(spacing: 10.0){
                         VStack{
-                              Spacer()
+                            Spacer()
                             Text("MEMBER LOGIN")
                                 
                                 .font(.system(size: 15))
                                 .foregroundColor(Color.white)
-                              
-                              Spacer()
+                            
+                            Spacer()
                             HStack{
                                 Text("LOGIN")
                                     .font(.system(size: 15))
@@ -142,16 +144,16 @@ struct ContentView: View {
                                     .cornerRadius(15)
                                 
                             }
-                              Spacer()
+                            Spacer()
                         }.frame(width: 165.0, height: 100.0).background(/*@START_MENU_TOKEN@*/Color.orange/*@END_MENU_TOKEN@*/).cornerRadius(5)
                         
                         VStack{
-                              Spacer()
+                            Spacer()
                             Text("BECOME A MEMBER")
                                 
                                 .font(.system(size: 15))
                                 .foregroundColor(Color.white)
-                             
+                            
                             Spacer()
                             HStack{
                                 Text("APPLY")
@@ -167,7 +169,7 @@ struct ContentView: View {
                                 
                             }
                             .frame(width: 80.0, height: 30.0)
-                              Spacer()
+                            Spacer()
                             
                         }.frame(width: 165.0, height: 100.0).background(Color.green).cornerRadius(5)
                         
@@ -177,13 +179,19 @@ struct ContentView: View {
                 
             }
             
-            ForEach(data, id: \.self) { dat in
-                
-                Text(dat)
-            }
+            //            ForEach(data, id: \.self) { dat in
+            //
+            //                Text(dat)
+            //
+            //            }
         }
     }
 }
+
+
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
