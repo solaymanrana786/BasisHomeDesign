@@ -36,7 +36,7 @@ struct ContentView: View {
     
     var body: some View {
         List{
-            ScrollView(.vertical){
+            ScrollView(.vertical, showsIndicators: false){
                 VStack{
                     HStack{
                         Image("menu")
@@ -56,7 +56,7 @@ struct ContentView: View {
                             .resizable()
                             .frame(width: 30, height: 30)
                             .clipped()
-                    }.padding(.trailing)
+                    }
                     
                     
                     Image("Espresso")
@@ -64,7 +64,7 @@ struct ContentView: View {
                         .frame(height: 180)
                         .clipped()
                         .cornerRadius(5)
-                        .padding(.trailing)
+                        
                     
                     
                     VStack(alignment: .leading){
@@ -75,7 +75,7 @@ struct ContentView: View {
                             .font(.system(size: 14))
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.top, 8)
-                            .padding(.trailing)
+                            
                     }
                     
                     HStack(alignment: .center, spacing:15.0){
@@ -157,7 +157,6 @@ struct ContentView: View {
                         VStack{
                             Spacer()
                             Text("MEMBER LOGIN")
-                                
                                 .font(.system(size: 15))
                                 .foregroundColor(Color.white)
                             
@@ -174,7 +173,7 @@ struct ContentView: View {
                                 
                             }
                             Spacer()
-                        }.frame(width: 165.0, height: 100.0).background(/*@START_MENU_TOKEN@*/Color.orange/*@END_MENU_TOKEN@*/).cornerRadius(5)
+                        }.frame(width: 180.0, height: 100.0).background(Color.orange).cornerRadius(5)
                         
                         VStack{
                             Spacer()
@@ -201,9 +200,9 @@ struct ContentView: View {
                             .frame(width: 80.0, height: 30.0)
                             Spacer()
                             
-                        }.frame(width: 165.0, height: 100.0).background(Color.green).cornerRadius(5)
+                        }.frame(width: 180.0, height: 100.0).background(Color.green).cornerRadius(5)
                         
-                    }.padding(.top).padding(.trailing).padding(.bottom).padding(.leading,0)
+                    }.padding(.top).padding(.bottom)
                     
                     
                     //Header in first collection view
@@ -218,11 +217,10 @@ struct ContentView: View {
                                 .font(.system(size: 15))
                             
                             Spacer()
-                            
                             Text("View All")
                                 .font(.subheadline)
                                 .font(.system(size: 13))
-                                .padding(.trailing)
+
                                 .foregroundColor(.green)
                         }.padding(.bottom)
                         
@@ -285,7 +283,7 @@ struct ContentView: View {
                                 }
                             }
                             
-                        }
+                        }.edgesIgnoringSafeArea(.all)
                         
                         HStack{
                             Text("Current News")
@@ -355,9 +353,9 @@ struct ContentView: View {
                                 }
                             }
                             
-                        }
+                        }.padding(.trailing, 0)
                     }
-                }
+                }.edgesIgnoringSafeArea(.all)
                 
             }
             
