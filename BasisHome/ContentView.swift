@@ -10,8 +10,30 @@
 import SwiftUI
 
 struct ContentView: View {
+     @State var myInput: String = ""
+    struct Data {
+        var id:Int
+        var name:String
+        var imageName:String
+        var workShop:String
+        
+        
+    }
     
-    let data = ["1","2","3"]
+    
+    let data : [Data] = [
+        .init(id:0, name: "SQB Account service", imageName: "Latte", workShop: "Workshop on EEF Aplication"),
+        .init(id:1, name: "SQB Account service", imageName: "IcedCoffee",workShop: "Workshop on EEF Aplication"),
+        .init(id:2, name: "Benifit for BASIS Member", imageName: "ColdBrew",workShop: "Workshop on EEF Aplication"),
+        .init(id:0, name: "SQB Account service", imageName: "Latte",workShop: "Workshop on EEF Aplication"),
+        .init(id:1, name: "SQB Account service", imageName: "IcedCoffee",workShop: "Workshop on EEF Aplication"),
+        .init(id:2, name: "Benifit for BASIS Member", imageName: "ColdBrew",workShop: "Workshop on EEF Aplication"),
+        .init(id:0, name: "SQB Account service", imageName: "Latte",workShop: "Workshop on EEF Aplication"),
+        .init(id:1, name: "SQB Account service", imageName: "IcedCoffee",workShop: "Workshop on EEF Aplication"),
+        .init(id:2, name: "Benifit for BASIS Member", imageName: "ColdBrew",workShop: "Workshop on EEF Aplication")
+    ]
+    
+    
     var body: some View {
         List{
             ScrollView(.vertical){
@@ -23,7 +45,11 @@ struct ContentView: View {
                             .clipped()
                         Spacer()
                         
-                        Text("Basis Demo")
+                        TextField("Search", text: $myInput)
+                            .padding(.all)
+                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 1)
+                            
+                            
                         Spacer()
                         
                         Image("bell")
@@ -33,12 +59,12 @@ struct ContentView: View {
                     }.padding(.trailing)
                     
                     
-                        Image("Espresso")
-                            .resizable()
-                            .frame(height: 180)
-                            .clipped()
-                            .cornerRadius(5)
-                            .padding(.trailing)
+                    Image("Espresso")
+                        .resizable()
+                        .frame(height: 180)
+                        .clipped()
+                        .cornerRadius(5)
+                        .padding(.trailing)
                     
                     
                     VStack(alignment: .leading){
@@ -125,6 +151,8 @@ struct ContentView: View {
                         
                     }.padding(.top).padding(.trailing)
                     
+                    //become a member
+                    
                     HStack(spacing: 10.0){
                         VStack{
                             Spacer()
@@ -136,8 +164,9 @@ struct ContentView: View {
                             Spacer()
                             HStack{
                                 Text("LOGIN")
-                                    .font(.system(size: 15))
-                                    .foregroundColor(Color.red)
+                                    .font(.system(size: 13))
+                                     .fontWeight(.semibold)
+                                    .foregroundColor(Color.orange)
                                     .padding(.all, 5.0)
                                     .frame(width: 80.0, height: 30.0)
                                     .background(Color.white)
@@ -157,8 +186,9 @@ struct ContentView: View {
                             Spacer()
                             HStack{
                                 Text("APPLY")
-                                    .font(.system(size: 15))
-                                    .foregroundColor(Color.red)
+                                    .font(.system(size: 13))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color.green)
                                     .padding(.all, 5.0)
                                     .frame(width: 80.0, height: 30.0)
                                     .background(Color.white)
@@ -175,20 +205,171 @@ struct ContentView: View {
                         
                     }.padding(.top).padding(.trailing).padding(.bottom).padding(.leading,0)
                     
+                    
+                    //Header in first collection view
+                    
+                    
+                    
+                    VStack{
+                        
+                        HStack{
+                            Text("Our Services")
+                                .font(.headline)
+                                .font(.system(size: 15))
+                            
+                            Spacer()
+                            
+                            Text("View All")
+                                .font(.subheadline)
+                                .font(.system(size: 13))
+                                .padding(.trailing)
+                                .foregroundColor(.green)
+                        }.padding(.bottom)
+                        
+                        HStack(alignment: .top, spacing: 0.0){
+                            Button(action: {
+                                
+                                
+                            }) {
+                                Text("Member")
+                            }.frame(width: 173, height: 50)
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                            
+                            
+                            
+                            
+                            Button(action: {
+                            }) {
+                                Text("Non Member")
+                            }
+                            .foregroundColor(.gray)
+                            .frame(width: 173, height: 50)
+                            
+                            
+                        }.border(Color.gray, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                            .padding(.leading, -20)
+                        
+                        
+                        ScrollView(.horizontal,showsIndicators: false){
+                            HStack(alignment: .top) {
+                                ForEach(data, id: \.id) { dat in
+                                    
+                                    ZStack{
+                                        //
+                                        
+                                        
+                                        Rectangle()
+                                            .frame(width: 150, height: 150)
+                                            .foregroundColor(Color("back"))
+                                        
+                                        VStack{
+                                            Image(dat.imageName)
+                                                .resizable()
+                                                .renderingMode(.original)
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: 50, height: 50)
+                                                .clipShape(Circle())
+                                                .shadow(radius: 2)
+                                            Text(dat.name)
+                                                .padding(.top)
+                                                .multilineTextAlignment(.center)
+                                                .lineLimit(2)
+                                                .fixedSize(horizontal: false, vertical: true)
+                                                .font(.system(size: 12))
+                                            }.frame(width: 100)
+                                        
+                                        
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+                        
+                        HStack{
+                            Text("Current News")
+                                .font(.headline)
+                                .font(.system(size: 15))
+                            
+                            Spacer()
+                            
+                            Text("View All")
+                                .font(.subheadline)
+                                .font(.system(size: 13))
+                                .padding(.trailing)
+                                .foregroundColor(.green)
+                        }.padding(.bottom).padding(.top)
+                        
+                        
+                        ScrollView(.horizontal,showsIndicators: false){
+                            HStack(alignment: .top) {
+                                ForEach(data, id: \.id) { dat in
+                                    
+                                    ZStack(alignment: .trailing){
+                                        //
+                                        
+                                        Image(dat.imageName)
+                                            .resizable()
+                                            .renderingMode(.original)
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 300, height: 170)
+                                          
+                                            .shadow(radius: 2)
+                                        
+                                        Rectangle()
+                                            .frame(width: 150, height: 170)
+                                            .foregroundColor(Color("back"))
+                                        
+                                        
+                                        VStack{
+                                            Spacer()
+                                            Text(dat.workShop)
+                                                .multilineTextAlignment(.center)
+                                                .lineLimit(2)
+                                                .fixedSize(horizontal: false, vertical: true)
+                                                .font(.system(size: 14))
+                                            
+                                            Spacer()
+                                            Text("Us Bangla Tech Invest Summit held on 12 Feb")
+                                                .font(.system(size: 12))
+                                                .foregroundColor(.gray)
+                                            
+                                             Spacer()
+                                            Button(action: {}) {
+                                                Text("Details")
+                                                    .foregroundColor(.green)
+                                                    .font(.system(size: 15))
+                                                    .padding(.all, 5.0)
+                                                    .frame(width: 80.0, height: 30.0)
+                                                    .background(Color.white)
+                                                    .cornerRadius(15)
+                                            }
+                                             Spacer()
+                                            
+                                            }.padding(.trailing).frame(width: 130)
+                                        
+                                        
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+                    }
                 }
                 
             }
             
-            //            ForEach(data, id: \.self) { dat in
-            //
-            //                Text(dat)
-            //
-            //            }
         }
+        
+        //            ForEach(data, id: \.self) { dat in
+        //
+        //                Text(dat)
+        //
+        //            }
     }
 }
-
-
 
 
 
